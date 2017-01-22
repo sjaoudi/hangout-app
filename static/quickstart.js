@@ -10,12 +10,14 @@ if (!navigator.webkitGetUserMedia && !navigator.mozGetUserMedia) {
   alert('WebRTC is not available in your browser.');
 }
 
-// $(document).ready(function() {
-//     $.get("/phrase", function(data) {
-//         console.log("data");
-//         console.log(data);
-//     })
-// });
+$(document).ready(function() {
+    console.log("hi");
+    $.get("/yield", function(data) {
+        console.log("data");
+        console.log(data);
+        log(data);
+    })
+});
 
 // When we are about to transition away from this page, disconnect
 // from the room, if joined.
@@ -24,6 +26,7 @@ window.addEventListener('beforeunload', leaveRoomIfJoined);
 $.getJSON('/token', function (data) {
   identity = data.identity;
 
+  console.log("hi");
   // Create a Video Client and connect to Twilio
   videoClient = new Twilio.Video.Client(data.token);
   document.getElementById('room-controls').style.display = 'block';

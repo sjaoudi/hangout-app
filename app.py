@@ -14,8 +14,6 @@ app = Flask(__name__)
 fake = Factory.create()
 load_dotenv(find_dotenv())
 
-#socketio = SocketIO(app)
-
 @app.route('/')
 def index():
     return app.send_static_file('index.html')
@@ -75,20 +73,24 @@ def getPhrase():
 
 @app.route('/yield')
 def test_message():
-    string = ''
-    f =  open('test_1.txt', 'r')
-    for line in f:
-       string += line + "\r\n"
+    # def inner():
+        # string = '<ul>\n'
+        # yield '<ul>\n'
+        string = '<ul>\n'
+        f =  open('test_1.txt', 'r')
+        for line in f:
+            # string += line + "\r\n"
+            string += '<li>%s</li>\n' % line
+        string += '</ul>'
 
-    return string
+        return string
+    # return Response(inner(), mimetype='text/html')
 
 if __name__ == '__main__':
     # app.config['SERVER_NAME'] = 'localhost:8000'
     #app.run()
     p1 = Process(target=app.run, args=())
     p1.start()
-
-
 
     while 1:
 
@@ -101,7 +103,7 @@ if __name__ == '__main__':
         p2.terminate()
         f = open('test_1.txt', 'a')
         f.write(phrase + "\n")
-        
+
 
     p2.join()
     p1.join()
