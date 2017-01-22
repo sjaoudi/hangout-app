@@ -3,6 +3,7 @@ var activeRoom;
 var previewMedia;
 var identity;
 var roomName;
+var test;
 
 // Check for WebRTC
 if (!navigator.webkitGetUserMedia && !navigator.mozGetUserMedia) {
@@ -51,6 +52,7 @@ $.getJSON('/token', function (data) {
 
 // Successfully connected!
 function roomJoined(room) {
+  text = "test"
   activeRoom = room;
 
   log("Joined as '" + identity + "'");
