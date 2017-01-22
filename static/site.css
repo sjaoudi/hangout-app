@@ -1,4 +1,4 @@
-﻿@@import url(https://fonts.googleapis.com/css?family=Quicksand);
+﻿@import url(https://fonts.googleapis.com/css?family=Quicksand);
 
 body,
 p {
@@ -53,7 +53,7 @@ div#controls {
   div#controls p.instructions {
     text-align: left;
     margin-bottom: 1em;
-    font-family: Helvetica-LightOblique, Helvetica, sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-style: oblique;
     font-size: 1.25em;
     color: #777776;
@@ -64,14 +64,14 @@ div#controls {
     height: 2.5em;
     margin-top: 1.75em;
     border-radius: 1em;
-    font-family: "Helvetica Light", Helvetica, sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-size: .8em;
     font-weight: lighter;
     outline: 0;
   }
 
   div#controls div#room-controls input {
-    font-family: Helvetica-LightOblique, Helvetica, sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-style: oblique;
     font-size: 1em;
   }
@@ -141,7 +141,7 @@ div#controls {
 
     div#controls div#log p {
       color: #686865;
-      font-family: 'Share Tech Mono', 'Courier New', Courier, fixed-width;
+      font-family: Quicksand, fixed-width;
       font-size: 1.25em;
       line-height: 1.25em;
       margin-left: 1em;
@@ -200,7 +200,7 @@ div#controls {
   div#controls p.instructions {
     text-align: left;
     margin-bottom: 1em;
-    font-family: Helvetica-LightOblique, Helvetica, sans-serif;
+    font-family: Quicksand, sans-serif;
     font-style: oblique;
     font-size: 1.25em;
     color: #777776;
@@ -211,14 +211,14 @@ div#controls {
     height: 2.5em;
     margin-top: 1.75em;
     border-radius: 1em;
-    font-family: "Helvetica Light", Helvetica, sans-serif;
+    font-family: Quicksand, sans-serif;
     font-size: .8em;
     font-weight: lighter;
     outline: 0;
   }
 
   div#controls div#room-controls input {
-    font-family: Helvetica-LightOblique, Helvetica, sans-serif;
+    font-family: Quicksand, sans-serif;
     font-style: oblique;
     font-size: 1em;
   }
@@ -288,7 +288,7 @@ div#controls {
 
     div#controls div#log p {
       color: #686865;
-      font-family: 'Share Tech Mono', 'Courier New', Courier, fixed-width;
+      font-family: Quicksand, fixed-width;
       font-size: 1.25em;
       line-height: 1.25em;
       margin-left: 1em;
