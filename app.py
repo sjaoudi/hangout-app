@@ -6,10 +6,15 @@ from dotenv import load_dotenv, find_dotenv
 import transcribe_streaming
 from threading import Thread
 from multiprocessing import Process, Queue
+from flask.ext.socketio import SocketIO, emit
 
 app = Flask(__name__)
 fake = Factory.create()
 load_dotenv(find_dotenv())
+
+socketio = SocketIO(app)
+
+phrase_dict = dict()
 
 @app.route('/')
 def index():
@@ -36,16 +41,37 @@ def token():
     # Return token info as JSON
     return jsonify(identity=token.identity, token=token.to_jwt())
 
+# @app.route('/phrase')
+# def getPhrase():
+#     with open('test.txt', 'r') as f:
+#         phrase = f.read()
+#     return phrase
+
+@socketio.on('my_event', namespace='/test')
+def test_message(message):
+    # print arg
+    # emit('my_response', {'data': 'from the server'} )
+    with open('test.txt', 'r') as f:
+        phrase = f.read()
+    emit('my_response', {'data': phrase})
+    # emit('my_response', {'data': message['data']})
+
 if __name__ == '__main__':
-
-    q = Queue()
-
-    p1 = Process(target=app.run, args=())
+    # app.config['SERVER_NAME'] = 'localhost:8000'
+    # app.run()
+    # p1 = Process(target=app.run, args=())
+    # socketio.run(app)
+    p1 = Process(target=socketio.run, args=(app,))
     p1.start()
+    while 1:
+        q = Queue()
+        p2 = Process(target=transcribe_streaming.main, args=(q,))
+        p2.start()
+        phrase = q.get()
+        print 'phrase: ', phrase
+        with open('test.txt', 'w') as f:
+            f.write(phrase)
+        p2.terminate()
 
-    p2 = Process(target=transcribe_streaming.main, args=(q,))
-    p2.start()
-    print 'response: ', q.get()
-
-    p1.join()
     p2.join()
+    p1.join()

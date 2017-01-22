@@ -194,7 +194,7 @@ def listen_print_loop(recognize_stream, q):
             num_chars_printed = len(transcript)
 
         else:
-            print(transcript + overwrite_chars)
+            # print(transcript + overwrite_chars)
             q.put(transcript + overwrite_chars)
 
             # Exit recognition if any of the transcribed phrases could be

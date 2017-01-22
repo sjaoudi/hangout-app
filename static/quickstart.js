@@ -9,6 +9,13 @@ if (!navigator.webkitGetUserMedia && !navigator.mozGetUserMedia) {
   alert('WebRTC is not available in your browser.');
 }
 
+// $(document).ready(function() {
+//     $.get("/phrase", function(data) {
+//         console.log("data");
+//         console.log(data);
+//     })
+// });
+
 // When we are about to transition away from this page, disconnect
 // from the room, if joined.
 window.addEventListener('beforeunload', leaveRoomIfJoined);
@@ -54,11 +61,6 @@ function roomJoined(room) {
   if (!previewMedia) {
     room.localParticipant.media.attach('#local-media');
   }
-
-  room.participants.forEach(function(participant) {
-    log("Already in Room: '" + participant.identity + "'");
-    participant.media.attach('#remote-media');
-  });
 
   // When a participant joins, draw their video on screen
   room.on('participantConnected', function (participant) {
