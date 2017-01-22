@@ -99,10 +99,9 @@ if __name__ == '__main__':
 
         print 'phrase: ', phrase
         p2.terminate()
-        
-        f = open('test_1.txt', 'w')
+        f = open('test_1.txt', 'a')
         f.write(phrase + "\n")
-
+        
 
     p2.join()
     p1.join()
